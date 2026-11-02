@@ -9,3 +9,5 @@ copy of the original HTML, which lives inside a Google Sites embed and could not
 be extracted automatically. Contact details on these pages are the ones shown in
 the live site's footer. Photos and the Venue banner carousel were not carried
 over (no image files were extracted).
+
+Blog: blog.html is the index, with posts under posts/.
