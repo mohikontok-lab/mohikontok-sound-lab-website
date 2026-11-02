@@ -138,5 +138,3 @@ form input[type="checkbox"] { display: inline; width: auto; }
 
 .error { color: #f87171; font-weight: bold; }
 
-.poster { text-align: center; }
-.poster img { width: 100%; max-width: 640px; height: auto; display: block; margin: 0 auto; }
