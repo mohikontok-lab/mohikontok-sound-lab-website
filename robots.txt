@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mohikontok.com/sitemap.xml
