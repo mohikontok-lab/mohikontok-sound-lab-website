@@ -38,7 +38,7 @@
       " " + form.start.value + "–" + form.end.value +
       ", " + (form.participants.value || 1) + " participant(s)" +
       ", estimated " + estimate.textContent + ".";
-    result.textContent = summary + " To confirm, send this request to hello@mohikontoksoundlab.com or call (929) 244-4144.";
+    result.textContent = summary + " To confirm, send this request to recording@mohikontoksoundlab.com or call (347) 497-3589.";
     result.hidden = false;
   });
 })();
