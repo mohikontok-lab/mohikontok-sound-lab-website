@@ -219,10 +219,13 @@
       <label>Participants <input type="number" name="Participants" min="1" value="1"></label>
       <label>Services
         <span class="check"><input type="checkbox" name="Session musician" id="musician" value="Yes"> Session musician (+$30/hr)</span>
+        <span class="check"><input type="checkbox" name="First visit" id="firstVisit" value="Yes"> First visit to the studio — 25% off</span>
       </label>
       <label>Notes <textarea name="Notes" rows="3"></textarea></label>
       <p class="estimate">Estimated cost: <strong id="estimate">$0</strong></p>
-      <p class="note">Bookings at least 24 hours ahead. Pick a start and end time from the lists — no typing needed.</p>
+      <p id="discount-note" class="note" hidden></p>
+      <p id="booking-error" class="error" hidden>Sessions must be at least 2 hours. Please pick an end time at least 2 hours after the start time.</p>
+      <p class="note">Bookings at least 24 hours ahead. Sessions are a minimum of 2 hours. Pick a start and end time from the lists — no typing needed.</p>
       <button class="button" type="submit">Request Booking</button>
     </form>
     <p class="note">Submitting sends your request to the studio — we'll confirm by email or phone.</p>
