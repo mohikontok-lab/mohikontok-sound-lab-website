@@ -13,3 +13,5 @@ over (no image files were extracted).
 Blog: blog.html is the index, with posts under posts/.
 
 Venue photos: assets/photos/venue-1.jpg … venue-9.jpg, shown in the Venue page slideshow.
+
+Music page (2026-11-02): music.html carries 12 Spotify embeds — mOhiKonTok Top Tracks (10) plus Fly over My Friend and Holud Re Tumi Kon Kon Kaje Lago — with a Music link in the nav on every page.
