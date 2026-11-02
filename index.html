@@ -83,15 +83,23 @@
 
   <section id="booking">
     <h2>Book a Session</h2>
-    <form id="booking-form">
-      <label>Name <input type="text" name="name" required></label>
-      <label>Email <input type="email" name="email" required></label>
-      <label>Phone <input type="tel" name="phone"></label>
-      <label>Date <input type="date" name="date" required></label>
-      <label>Start time <input type="time" name="start" required></label>
-      <label>End time <input type="time" name="end" required></label>
+    <p id="booked-banner" class="result" hidden>Thanks — your booking request was sent. The studio will confirm by email or phone.</p>
+    <form id="booking-form" action="https://formsubmit.co/recording@mohikontoksoundlab.com" method="POST">
+      <input type="hidden" name="_subject" value="New studio booking request — Mohikontok Sound Lab">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://soundlab.mohikontok.com/index.html?booked=1">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_autoresponse" value="Thanks for your booking request at Mohikontok Sound Lab — we'll confirm your session shortly.">
+      <input type="text" name="_honey" style="display:none">
+      <input type="hidden" name="Estimated cost" id="estimate-field" value="$0">
+      <label>Name <input type="text" name="Name" required></label>
+      <label>Email <input type="email" name="Email" required></label>
+      <label>Phone <input type="tel" name="Phone"></label>
+      <label>Date <input type="date" name="Date" id="date" required></label>
+      <label>Start time <input type="time" name="Start time" id="start" required></label>
+      <label>End time <input type="time" name="End time" id="end" required></label>
       <label>Session type
-        <select name="sessionType">
+        <select name="Session type" id="sessionType">
           <option>Spoken Poetry &amp; Storytelling</option>
           <option>Live Band &amp; Ensemble</option>
           <option>Podcast &amp; Voice</option>
@@ -100,22 +108,21 @@
         </select>
       </label>
       <label>Room
-        <select name="room" id="room">
-          <option value="90">Room A &mdash; Main Performance Studio ($90/hr)</option>
-          <option value="65">Room B &mdash; Vocal &amp; Podcast Suite ($65/hr)</option>
-          <option value="75">Room C &mdash; Rehearsal &amp; Live Room ($75/hr)</option>
+        <select name="Room" id="room">
+          <option value="Room A — Main Performance Studio" data-rate="90">Room A &mdash; Main Performance Studio ($90/hr)</option>
+          <option value="Room B — Vocal &amp; Podcast Suite" data-rate="65">Room B &mdash; Vocal &amp; Podcast Suite ($65/hr)</option>
+          <option value="Room C — Rehearsal &amp; Live Room" data-rate="75">Room C &mdash; Rehearsal &amp; Live Room ($75/hr)</option>
         </select>
       </label>
-      <label>Participants <input type="number" name="participants" min="1" value="1"></label>
+      <label>Participants <input type="number" name="Participants" min="1" value="1"></label>
       <label>Services
-        <span class="check"><input type="checkbox" name="musician" id="musician"> Session musician (+$30/hr)</span>
+        <span class="check"><input type="checkbox" name="Session musician" id="musician" value="Yes"> Session musician (+$30/hr)</span>
       </label>
-      <label>Notes <textarea name="notes" rows="3"></textarea></label>
+      <label>Notes <textarea name="Notes" rows="3"></textarea></label>
       <p class="estimate">Estimated cost: <strong id="estimate">$0</strong></p>
       <button class="button" type="submit">Request Booking</button>
-      <p id="booking-result" class="result" hidden></p>
     </form>
-    <p class="note">This page is a static request form: submitting shows your request summary. To confirm, send it to <a href="mailto:recording@mohikontoksoundlab.com">recording@mohikontoksoundlab.com</a> or call (347) 497-3589.</p>
+    <p class="note">Submitting sends your request to the studio — we'll confirm by email or phone.</p>
   </section>
 </main>
 

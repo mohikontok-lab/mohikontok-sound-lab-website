@@ -4,41 +4,39 @@
 
   var room = document.getElementById("room");
   var musician = document.getElementById("musician");
+  var start = document.getElementById("start");
+  var end = document.getElementById("end");
   var estimate = document.getElementById("estimate");
-  var result = document.getElementById("booking-result");
+  var estimateField = document.getElementById("estimate-field");
+  var banner = document.getElementById("booked-banner");
 
-  function hoursBetween(start, end) {
-    if (!start || !end) return 0;
-    var s = start.split(":").map(Number);
-    var e = end.split(":").map(Number);
-    var h = (e[0] * 60 + e[1] - (s[0] * 60 + s[1])) / 60;
+  if (banner && new URLSearchParams(window.location.search).get("booked") === "1") {
+    banner.hidden = false;
+  }
+
+  function hoursBetween(s, e) {
+    if (!s || !e) return 0;
+    var a = s.split(":").map(Number);
+    var b = e.split(":").map(Number);
+    var h = (b[0] * 60 + b[1] - (a[0] * 60 + a[1])) / 60;
     return h > 0 ? h : 0;
   }
 
   function updateEstimate() {
-    var rate = parseFloat(room.value) || 0;
+    var rate = parseFloat(room.options[room.selectedIndex].dataset.rate) || 0;
     if (musician.checked) rate += 30;
-    var h = hoursBetween(form.start.value, form.end.value);
-    estimate.textContent = "$" + (rate * h).toFixed(0);
+    var total = "$" + (rate * hoursBetween(start.value, end.value)).toFixed(0);
+    estimate.textContent = total;
+    estimateField.value = total;
   }
 
-  ["room", "musician", "start", "end"].forEach(function (id) {
-    var el = document.getElementById(id) || form[id];
-    if (el) el.addEventListener("change", updateEstimate);
+  [room, musician, start, end].forEach(function (el) {
+    el.addEventListener("change", updateEstimate);
+    el.addEventListener("input", updateEstimate);
   });
-  form.start.addEventListener("input", updateEstimate);
-  form.end.addEventListener("input", updateEstimate);
   updateEstimate();
 
-  form.addEventListener("submit", function (ev) {
-    ev.preventDefault();
-    updateEstimate();
-    var summary = "Request: " + form.sessionType.value + ", " +
-      room.options[room.selectedIndex].text + ", " + form.date.value +
-      " " + form.start.value + "–" + form.end.value +
-      ", " + (form.participants.value || 1) + " participant(s)" +
-      ", estimated " + estimate.textContent + ".";
-    result.textContent = summary + " To confirm, send this request to recording@mohikontoksoundlab.com or call (347) 497-3589.";
-    result.hidden = false;
-  });
+  // Let the form submit natively to the form endpoint; just refresh the
+  // hidden estimate field first so the submitted value is current.
+  form.addEventListener("submit", updateEstimate);
 })();
