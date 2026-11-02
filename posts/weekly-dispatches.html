@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Weekly Dispatch, from the first issue | Mohikontok Sound Lab Blog</title>
+<meta name="description" content="The story of the Mohikontok Sound Lab Weekly Dispatch, from the first issue through the Halloween edition — and how to subscribe.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">mOHiKOnTOk <span>Sound Lab</span></div>
+  <nav class="site-nav" aria-label="Main">
+    <a href="../index.html">Home</a>
+    <a href="../venue.html">Venue</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../blog.html">Blog</a>
+  </nav>
+</header>
+
+<main>
+  <article>
+    <h1>The Weekly Dispatch, from the first issue</h1>
+    <p class="note">November 2, 2026</p>
+    <p>Every week, Mohikontok Sound Lab sends a Weekly Dispatch: one studio craft feature, one LISTEN from the Lab, and one WATCH from a session. Here is how the series has run, from the first issue.</p>
+
+    <h2>Week of October 5 — the first issue: events</h2>
+    <p>The series opened with events: live musicians for hire and full sound systems for hire — vocalists, instrumentalists, DJs, and ensembles, plus professional gear set up and run by people who do this for a living — for birthdays, weddings, community gatherings, and corporate events. One call covers the talent and the tech.</p>
+
+    <h2>Week of October 12 — show up session-ready</h2>
+    <p>The feature was a studio habit that saves money and makes records sound better: show up session-ready. Do a session dry run 48 hours before, put everything in one folder — your instrumental as a 24-bit WAV labeled with song title and BPM, your lyrics as a clean sheet — and warm up 10 minutes before you leave the house.</p>
+    <p>🎵 LISTEN: <a href="https://www.youtube.com/watch?v=ntkaJM4Yyxo">“Paap” — Golam Mostofa performing Kazi Nazrul Islam</a>, recorded at the Poetry Camp and released October 6.</p>
+    <p>🎬 WATCH: a 4-second tour of the live room under purple LED lighting — the vocal mic on its stand, guitars along the wall, and the laptop DAW station ready to roll.</p>
+
+    <h2>Week of October 19 — mic technique</h2>
+    <p>The feature was the skill that separates good vocal recordings from great ones: mic technique. Home base is a hand's width — about four to six inches — from the mic; lean in on the quiet lines, ease back on the big chorus notes, and angle the mic about 15 degrees so plosives sail past while your tone stays full.</p>
+    <p>🎵 LISTEN: <a href="https://www.youtube.com/watch?v=uJR8Ywn0Vhs">“Shoyeb Monir feat. Lalon Sai”</a> — a Lalon Shah recording cut right here in the studio.</p>
+    <p>🎬 WATCH: six minutes of a vocal take in progress — mic in hand, lyrics on the phone, the real work of getting a song down.</p>
+
+    <h2>Week of October 26 — the Halloween issue</h2>
+    <p>The feature was clean voice audio for reels, shorts, and podcasts: your phone camera is good enough, but your phone microphone in a noisy room usually isn't — and the pro move is recording your voice and your video separately, then syncing them. The issue carried a Halloween treat — 15% off a first visit — and welcomed 15 Bronx arts organizations as new readers. It was sent October 26 to 264 contacts.</p>
+    <p>🎵 LISTEN: <a href="https://www.youtube.com/watch?v=YUsCXz-Nfus">Franz Kafka's The Metamorphosis, dubbed in Bengali</a>, posted October 23.</p>
+    <p>🎬 WATCH: <a href="https://youtu.be/_Ayx03xtDwc">a folk song performed by Shoab Monir</a>.</p>
+
+    <h2>Who the dispatch is for</h2>
+    <p>The readership rotates week to week: studio users, artists, content creators, and studio owners — everyone who records, performs, or makes things with sound in the Bronx and beyond.</p>
+
+    <h2 id="subscribe">Subscribe to the Weekly Dispatch</h2>
+    <p id="subscribed-banner" class="result" hidden>Thanks — you're subscribed. Welcome to the Weekly Dispatch.</p>
+    <p>Join the dispatch and get one email a week from the Lab. Your address is stored with the studio's contacts so you receive Sound Lab communications — nothing else.</p>
+    <form id="subscribe-form" action="https://formsubmit.co/recording@mohikontoksoundlab.com" method="POST">
+      <input type="hidden" name="_subject" value="New Sound Lab newsletter subscription">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://mohikontok.com/posts/weekly-dispatches.html?subscribed=1">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_autoresponse" value="Welcome to the Mohikontok Sound Lab Weekly Dispatch — one email a week from the Lab. 🌱 We save trees by avoiding printing on paper and prefer digital communication.">
+      <input type="text" name="_honey" style="display:none">
+      <label>Name <input type="text" name="Name" required></label>
+      <label>Email <input type="email" name="Email" required></label>
+      <button class="button" type="submit">Subscribe</button>
+    </form>
+    <p class="note">Mohikontok Sound Lab, 1389 Kearney Ave, Bronx, NY 10465 &bull; (347) 497-3589 &bull; recording@mohikontoksoundlab.com &bull; Monday–Sunday, 10 AM–11 PM, by appointment. <a href="../index.html#booking">Book a session</a>.</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <p><strong>mOHiKOnTOk Sound Lab</strong> &mdash; 1389 Kearney Ave, Bronx, NY 10465</p>
+  <p>Phone: (347) 497-3589 &bull; Email: <a href="mailto:recording@mohikontoksoundlab.com">recording@mohikontoksoundlab.com</a></p>
+  <p>Hours: Mon&ndash;Sun, 10 AM&ndash;11 PM, by appointment</p>
+</footer>
+
+<script>
+  if (new URLSearchParams(window.location.search).get("subscribed") === "1") {
+    document.getElementById("subscribed-banner").hidden = false;
+  }
+</script>
+</body>
+</html>
