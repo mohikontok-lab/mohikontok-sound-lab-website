@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohikontok Sound Lab | Bronx Recording Studio &amp; Literary Audio Sanctuary</title>
+<meta name="description" content="Mohikontok Sound Lab is a Bronx recording studio at 1389 Kearney Ave, offering recording, mixing, and mastering, plus spoken poetry, voiceover, and audiobook recording by appointment.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">mOHiKOnTOk <span>Sound Lab</span></div>
+  <nav class="site-nav" aria-label="Main">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="venue.html">Venue</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">Content &bull; Audio &amp; Literary Sanctuary</p>
+    <p class="eyebrow small">Sound Lab Selections &bull; The Bronx Live Room &amp; Spoken Word</p>
+    <h1>Bronx Recording Studio Where Spoken Poetry Meets Live Sound</h1>
+    <p class="lede">From iconic Bengali literary recitations of Jibanananda Das and Kazi Nazrul Islam to full-ensemble musical tracking, our custom-treated Bronx space is engineered with dual acoustic environments: a red-and-black foam rehearsal hall and a dedicated white-brick literary recitation booth.</p>
+    <p>
+      <a class="button" href="#booking">Reserve Studio Block</a>
+      <a class="button outline" href="#sessions">Explore Live Sessions &amp; Poetry</a>
+    </p>
+  </section>
+
+  <section id="rooms">
+    <h2>The Rooms</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Room A &mdash; Main Performance Studio</h3>
+        <p class="rate">$90/hr</p>
+        <p>Full-ensemble tracking in the main live room.</p>
+      </article>
+      <article class="card">
+        <h3>Room B &mdash; Vocal &amp; Podcast Suite</h3>
+        <p class="rate">$65/hr</p>
+        <p>Vocals, podcast, and voiceover in a focused suite.</p>
+      </article>
+      <article class="card">
+        <h3>Room C &mdash; Rehearsal &amp; Live Room</h3>
+        <p class="rate">$75/hr</p>
+        <p>Rehearsal and live-room sessions.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="sessions">
+    <h2>Featured Sessions</h2>
+    <ul class="session-list">
+      <li>Spoken Poetry &amp; Storytelling</li>
+      <li>Live Band &amp; Ensemble</li>
+      <li>Podcast &amp; Voice</li>
+      <li>Music Production</li>
+    </ul>
+  </section>
+
+  <section id="gear">
+    <h2>Gear</h2>
+    <p>Neumann, SSL, Universal Audio, Shure, Yamaha, Genelec, Avid Pro Tools.</p>
+    <p>Roland HandSonic Multi-Percussion, Yamaha MX49 Synthesizer, AeroBand Smart MIDI Guitar, multi-channel mixing console.</p>
+  </section>
+
+  <section id="copyright">
+    <h2>Copyright Services</h2>
+    <p>Artists keep 100% of their master rights.</p>
+  </section>
+
+  <section id="testimonials">
+    <h2>Artists Featured on the Live Site</h2>
+    <ul class="session-list">
+      <li>Maya Ellison</li>
+      <li>James Whitfield</li>
+      <li>Lena Ortiz</li>
+      <li>Carlos Mendez</li>
+    </ul>
+  </section>
+
+  <section id="booking">
+    <h2>Book a Session</h2>
+    <form id="booking-form">
+      <label>Name <input type="text" name="name" required></label>
+      <label>Email <input type="email" name="email" required></label>
+      <label>Phone <input type="tel" name="phone"></label>
+      <label>Date <input type="date" name="date" required></label>
+      <label>Start time <input type="time" name="start" required></label>
+      <label>End time <input type="time" name="end" required></label>
+      <label>Session type
+        <select name="sessionType">
+          <option>Spoken Poetry &amp; Storytelling</option>
+          <option>Live Band &amp; Ensemble</option>
+          <option>Podcast &amp; Voice</option>
+          <option>Music Production</option>
+          <option>Rehearsal</option>
+        </select>
+      </label>
+      <label>Room
+        <select name="room" id="room">
+          <option value="90">Room A &mdash; Main Performance Studio ($90/hr)</option>
+          <option value="65">Room B &mdash; Vocal &amp; Podcast Suite ($65/hr)</option>
+          <option value="75">Room C &mdash; Rehearsal &amp; Live Room ($75/hr)</option>
+        </select>
+      </label>
+      <label>Participants <input type="number" name="participants" min="1" value="1"></label>
+      <label>Services
+        <span class="check"><input type="checkbox" name="musician" id="musician"> Session musician (+$30/hr)</span>
+      </label>
+      <label>Notes <textarea name="notes" rows="3"></textarea></label>
+      <p class="estimate">Estimated cost: <strong id="estimate">$0</strong></p>
+      <button class="button" type="submit">Request Booking</button>
+      <p id="booking-result" class="result" hidden></p>
+    </form>
+    <p class="note">This page is a static request form: submitting shows your request summary. To confirm, send it to <a href="mailto:hello@mohikontoksoundlab.com">hello@mohikontoksoundlab.com</a> or call (929) 244-4144.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p><strong>mOHiKOnTOk Sound Lab</strong> &mdash; 1389 Kearney Ave, Bronx, NY 10465</p>
+  <p>Phone: (929) 244-4144 &bull; Email: <a href="mailto:hello@mohikontoksoundlab.com">hello@mohikontoksoundlab.com</a></p>
+  <p>Hours: Mon&ndash;Fri 10AM&ndash;8PM, Sat 11AM&ndash;6PM, Closed Sun</p>
+  <p>Official Web Platform MohikontokSoundLab.com</p>
+</footer>
+
+<script src="assets/booking.js"></script>
+</body>
+</html>
