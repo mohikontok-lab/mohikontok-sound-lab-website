@@ -91,3 +91,42 @@ form input[type="checkbox"] { display: inline; width: auto; }
   color: var(--muted);
 }
 .site-footer p { margin: 0.25rem 0; }
+
+.slideshow { position: relative; }
+.slideshow .slide { display: none; margin: 0; }
+.slideshow .slide.is-active { display: block; }
+.slideshow .slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.slideshow .slide figcaption { text-align: center; color: var(--muted); padding: 0.5rem 0; }
+.slide-prev, .slide-next {
+  position: absolute;
+  top: 38%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.slide-prev { left: 0.75rem; }
+.slide-next { right: 0.75rem; }
+.slide-dots { display: flex; gap: 0.5rem; justify-content: center; padding: 0.25rem 0; }
+.slide-dots .dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--panel);
+  cursor: pointer;
+}
+.slide-dots .dot.is-active { background: var(--accent-soft); border-color: var(--accent-soft); }

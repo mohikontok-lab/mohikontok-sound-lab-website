@@ -25,6 +25,63 @@
     <p>The studio has two rooms: a red-and-black live room, and a white-brick literary booth for spoken poetry and voiceover. Sessions are by appointment.</p>
     <p>Rates and the booking form are on the <a href="index.html#booking">home page</a>. Contact details are on the <a href="contact.html">Contact page</a>.</p>
   </section>
+
+  <section aria-label="Venue photos">
+    <h2>Venue photos</h2>
+    <div class="slideshow" id="venue-slideshow">
+      <div class="slides">
+        <figure class="slide is-active">
+          <img src="assets/photos/venue-1.jpg" alt="The live room, set for a full session">
+          <figcaption>The live room, set for a full session</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="assets/photos/venue-2.jpg" alt="The white-brick literary booth with a microphone">
+          <figcaption>The white-brick literary booth</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="assets/photos/venue-3.jpg" alt="The literary corner with a microphone and bookshelf">
+          <figcaption>The literary corner</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="assets/photos/venue-4.jpg" alt="The white-brick room with hexagonal lights">
+          <figcaption>The white-brick room, lit for a session</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="assets/photos/venue-5.jpg" alt="Guitars and a microphone in the live room">
+          <figcaption>Guitars and mics in the live room</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="assets/photos/venue-6.jpg" alt="Session gear in the live room">
+          <figcaption>Session gear in the live room</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="assets/photos/venue-7.jpg" alt="The studio wall with the Sound Lab banner and rate chart">
+          <figcaption>The studio wall</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="assets/photos/venue-8.jpg" alt="A singer at the microphone in the live room">
+          <figcaption>At the mic in the live room</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="assets/photos/venue-9.jpg" alt="A live session in the room">
+          <figcaption>A live session in the room</figcaption>
+        </figure>
+      </div>
+      <button class="slide-prev" type="button" aria-label="Previous photo">&#8249;</button>
+      <button class="slide-next" type="button" aria-label="Next photo">&#8250;</button>
+      <div class="slide-dots" role="group" aria-label="Choose a photo">
+        <button type="button" class="dot is-active" aria-label="Go to photo 1"></button>
+        <button type="button" class="dot" aria-label="Go to photo 2"></button>
+        <button type="button" class="dot" aria-label="Go to photo 3"></button>
+        <button type="button" class="dot" aria-label="Go to photo 4"></button>
+        <button type="button" class="dot" aria-label="Go to photo 5"></button>
+        <button type="button" class="dot" aria-label="Go to photo 6"></button>
+        <button type="button" class="dot" aria-label="Go to photo 7"></button>
+        <button type="button" class="dot" aria-label="Go to photo 8"></button>
+        <button type="button" class="dot" aria-label="Go to photo 9"></button>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -32,5 +89,34 @@
   <p>Phone: (347) 497-3589 &bull; Email: <a href="mailto:recording@mohikontoksoundlab.com">recording@mohikontoksoundlab.com</a></p>
   <p>Hours: Mon&ndash;Sun, 10 AM&ndash;11 PM, by appointment</p>
 </footer>
+
+<script>
+  (function () {
+    var root = document.getElementById("venue-slideshow");
+    if (!root) return;
+    var slides = root.querySelectorAll(".slide");
+    var dots = root.querySelectorAll(".dot");
+    var current = 0, timer = null;
+    function show(n) {
+      slides[current].classList.remove("is-active");
+      dots[current].classList.remove("is-active");
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add("is-active");
+      dots[current].classList.add("is-active");
+    }
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(function () { show(current + 1); }, 6000);
+    }
+    root.querySelector(".slide-prev").addEventListener("click", function () { show(current - 1); restart(); });
+    root.querySelector(".slide-next").addEventListener("click", function () { show(current + 1); restart(); });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () { show(i); restart(); });
+    });
+    root.addEventListener("mouseenter", function () { clearInterval(timer); });
+    root.addEventListener("mouseleave", restart);
+    restart();
+  })();
+</script>
 </body>
 </html>

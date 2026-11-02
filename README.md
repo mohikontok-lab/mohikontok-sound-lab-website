@@ -11,3 +11,5 @@ the live site's footer. Photos and the Venue banner carousel were not carried
 over (no image files were extracted).
 
 Blog: blog.html is the index, with posts under posts/.
+
+Venue photos: assets/photos/venue-1.jpg … venue-9.jpg, shown in the Venue page slideshow.
