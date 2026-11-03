@@ -34,6 +34,81 @@
     <p><a href="https://open.spotify.com/artist/3r7P1vpv1GVFxQ9GnSHDS2">Follow mOhiKonTok on Spotify</a></p>
   </section>
 
+  <section aria-label="Mohikontok Radio">
+    <h2>Mohikontok Radio</h2>
+    <p>Most recent 20 songs from Suno, @mohikontok. Total playing time: 51:04. Press Play inside the Suno player to start a track.</p>
+    <div class="card">
+      <h3 id="radioNowPlaying">Now playing: 1. বনহংসী হতে যদি তুমি (1:59)</h3>
+      <iframe id="radioPlayer" src="https://suno.com/embed/a8203093-da50-4b23-b5f3-3f91b083ffee" height="200" style="width:100%;border:0;background:#000" title="Mohikontok Radio player" allow="autoplay; encrypted-media"></iframe>
+      <p>
+        <button type="button" class="button" id="radioPrev">⏮ Previous</button>
+        <button type="button" class="button" id="radioNext">Next ⏭</button>
+        <button type="button" class="button outline" id="radioShuffle">Shuffle</button>
+      </p>
+      <p class="note">Suno's embed does not tell this page when a track ends, so Next / Previous are manual — it does not auto-advance on its own. <a id="radioOpenOnSuno" href="https://suno.com/song/a8203093-da50-4b23-b5f3-3f91b083ffee">Open this song on Suno</a></p>
+    </div>
+    <ol id="radioTrackList"></ol>
+    <p class="note">Note: the two “Fingerpicked Pulse” entries are two different songs (2:33 and 2:04). <a href="https://suno.com/@mohikontok">See all 188 songs on Suno</a></p>
+    <script>
+    const radioTracks = [
+    ["বনহংসী হতে যদি তুমি","1:59","https://suno.com/embed/a8203093-da50-4b23-b5f3-3f91b083ffee","https://suno.com/song/a8203093-da50-4b23-b5f3-3f91b083ffee"],
+    ["নীপবন","2:51","https://suno.com/embed/ebb40b50-038a-45f4-a326-4414fe80107a","https://suno.com/song/ebb40b50-038a-45f4-a326-4414fe80107a"],
+    ["Halloween Resonance","2:37","https://suno.com/embed/cc053039-1042-4ffc-8baa-51930ed11726","https://suno.com/song/cc053039-1042-4ffc-8baa-51930ed11726"],
+    ["Loye jao amay","4:24","https://suno.com/embed/b8e44d63-24c4-4c6a-855f-52b3328c135c","https://suno.com/song/b8e44d63-24c4-4c6a-855f-52b3328c135c"],
+    ["ভোর হবেই","0:22","https://suno.com/embed/15eac69a-5c19-42c9-a3e0-2b0c8f72ee6f","https://suno.com/song/15eac69a-5c19-42c9-a3e0-2b0c8f72ee6f"],
+    ["Dorian Jam","1:58","https://suno.com/embed/0c38556e-dcd5-457a-a15b-c662e74e65a3","https://suno.com/song/0c38556e-dcd5-457a-a15b-c662e74e65a3"],
+    ["Sound Tide","3:09","https://suno.com/embed/e21b62c6-1efc-49ff-a4e2-b61946e5336a","https://suno.com/song/e21b62c6-1efc-49ff-a4e2-b61946e5336a"],
+    ["শত্রুতা করবার সময়","0:45","https://suno.com/embed/e02487b9-c4f4-402f-981c-eb43b1176ba9","https://suno.com/song/e02487b9-c4f4-402f-981c-eb43b1176ba9"],
+    ["Neon Horizon","1:51","https://suno.com/embed/d190df67-9dbd-4b6d-964a-62a3d5b3bd1d","https://suno.com/song/d190df67-9dbd-4b6d-964a-62a3d5b3bd1d"],
+    ["অমরত্ব কাউকেই আমি দেইনি","1:48","https://suno.com/embed/68aad6c5-31e1-46a3-a392-5b419ba9b048","https://suno.com/song/68aad6c5-31e1-46a3-a392-5b419ba9b048"],
+    ["Slowe Fingerstyle","2:13","https://suno.com/embed/a1b952c0-b882-4657-ad25-799fe98a30fb","https://suno.com/song/a1b952c0-b882-4657-ad25-799fe98a30fb"],
+    ["Slow Fingerstyle","2:18","https://suno.com/embed/fbe93402-eb52-4f5a-9360-aefe4f1527c6","https://suno.com/song/fbe93402-eb52-4f5a-9360-aefe4f1527c6"],
+    ["Melodic Riff","2:18","https://suno.com/embed/03312a84-bf81-403b-b2b8-16ed9af0d446","https://suno.com/song/03312a84-bf81-403b-b2b8-16ed9af0d446"],
+    ["Fingerpicked Pulse","2:33","https://suno.com/embed/b16e07af-9c38-4fa2-8d19-3e6161d2213f","https://suno.com/song/b16e07af-9c38-4fa2-8d19-3e6161d2213f"],
+    ["Fingerpicked Pulse","2:04","https://suno.com/embed/c3172081-c76b-481b-8dd2-a09ccabb2c2d","https://suno.com/song/c3172081-c76b-481b-8dd2-a09ccabb2c2d"],
+    ["Fingerstyle Lullaby 2","7:59","https://suno.com/embed/12df90ac-95ba-4dd5-8d66-783c9b5223d6","https://suno.com/song/12df90ac-95ba-4dd5-8d66-783c9b5223d6"],
+    ["Fingerstyle Lullaby 1","2:27","https://suno.com/embed/9f2bd5b8-b1a0-44c4-80a5-fbe9cc9a10d3","https://suno.com/song/9f2bd5b8-b1a0-44c4-80a5-fbe9cc9a10d3"],
+    ["Raga yaman 2","2:04","https://suno.com/embed/8ef8875d-173c-49dc-b881-d13299dbf767","https://suno.com/song/8ef8875d-173c-49dc-b881-d13299dbf767"],
+    ["Raga yaman 1","2:39","https://suno.com/embed/f8dcb975-cfac-44ee-8bc2-0490c60cdf43","https://suno.com/song/f8dcb975-cfac-44ee-8bc2-0490c60cdf43"],
+    ["Dama dama mast qalandar story","2:45","https://suno.com/embed/de9b4419-e029-4bbb-b189-cffcf8478889","https://suno.com/song/de9b4419-e029-4bbb-b189-cffcf8478889"]
+    ];
+    let radioOrder = radioTracks.map((_, i) => i);
+    let radioPos = 0;
+    const radioList = document.getElementById('radioTrackList');
+    const radioPlayer = document.getElementById('radioPlayer');
+    const radioNow = document.getElementById('radioNowPlaying');
+    const radioOpen = document.getElementById('radioOpenOnSuno');
+    function radioRender() {
+      radioList.innerHTML = '';
+      radioOrder.forEach((ti, p) => {
+        const li = document.createElement('li');
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = radioTracks[ti][0] + ' (' + radioTracks[ti][1] + ')';
+        b.style.cssText = 'background:none;border:0;color:inherit;font:inherit;cursor:pointer;text-align:left;padding:0';
+        if (p === radioPos) b.style.color = '#f5c518';
+        b.addEventListener('click', () => { radioPos = p; radioPlay(); });
+        li.appendChild(b);
+        radioList.appendChild(li);
+      });
+    }
+    function radioPlay() {
+      const t = radioTracks[radioOrder[radioPos]];
+      radioPlayer.src = t[2];
+      radioNow.textContent = 'Now playing: ' + (radioPos + 1) + '. ' + t[0] + ' (' + t[1] + ')';
+      radioOpen.href = t[3];
+      radioRender();
+    }
+    document.getElementById('radioPrev').addEventListener('click', () => { radioPos = (radioPos - 1 + radioOrder.length) % radioOrder.length; radioPlay(); });
+    document.getElementById('radioNext').addEventListener('click', () => { radioPos = (radioPos + 1) % radioOrder.length; radioPlay(); });
+    document.getElementById('radioShuffle').addEventListener('click', () => {
+      for (let i = radioOrder.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [radioOrder[i], radioOrder[j]] = [radioOrder[j], radioOrder[i]]; }
+      radioPos = 0; radioPlay();
+    });
+    radioRender();
+    </script>
+  </section>
+
   <section aria-label="Top tracks on Spotify">
     <h2>Top tracks on Spotify</h2>
 
