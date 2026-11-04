@@ -37,21 +37,22 @@
 
   <section aria-label="Mohikontok Radio">
     <h2>Mohikontok Radio</h2>
-    <p>Most recent 20 songs from Suno, @mohikontok. Total playing time: 51:04. Press Play inside the Suno player to start a track.</p>
+    <p>21 songs from Suno, @mohikontok, starting with Bleak Gale Resonance. Total playing time: 54:18. Press Play inside the Suno player to start a track.</p>
     <div class="card">
-      <h3 id="radioNowPlaying">Now playing: 1. বনহংসী হতে যদি তুমি (1:59)</h3>
-      <iframe id="radioPlayer" src="https://suno.com/embed/a8203093-da50-4b23-b5f3-3f91b083ffee" height="200" style="width:100%;border:0;background:#000" title="Mohikontok Radio player" allow="autoplay; encrypted-media"></iframe>
+      <h3 id="radioNowPlaying">Now playing: 1. Bleak Gale Resonance (3:14)</h3>
+      <iframe id="radioPlayer" src="https://suno.com/embed/3f81516a-2117-43e4-abd6-66a82a454843" height="200" style="width:100%;border:0;background:#000" title="Mohikontok Radio player" allow="autoplay; encrypted-media"></iframe>
       <p>
         <button type="button" class="button" id="radioPrev">⏮ Previous</button>
         <button type="button" class="button" id="radioNext">Next ⏭</button>
         <button type="button" class="button outline" id="radioShuffle">Shuffle</button>
       </p>
-      <p class="note">Suno's embed does not tell this page when a track ends, so Next / Previous are manual — it does not auto-advance on its own. <a id="radioOpenOnSuno" href="https://suno.com/song/a8203093-da50-4b23-b5f3-3f91b083ffee">Open this song on Suno</a></p>
+      <p class="note">Suno's embed does not tell this page when a track ends, so Next / Previous are manual — it does not auto-advance on its own. <a id="radioOpenOnSuno" href="https://suno.com/song/3f81516a-2117-43e4-abd6-66a82a454843">Open this song on Suno</a></p>
     </div>
     <ol id="radioTrackList"></ol>
     <p class="note">Note: the two “Fingerpicked Pulse” entries are two different songs (2:33 and 2:04). <a href="https://suno.com/@mohikontok">See all 188 songs on Suno</a></p>
     <script>
     const radioTracks = [
+    ["Bleak Gale Resonance","3:14","https://suno.com/embed/3f81516a-2117-43e4-abd6-66a82a454843","https://suno.com/song/3f81516a-2117-43e4-abd6-66a82a454843"],
     ["বনহংসী হতে যদি তুমি","1:59","https://suno.com/embed/a8203093-da50-4b23-b5f3-3f91b083ffee","https://suno.com/song/a8203093-da50-4b23-b5f3-3f91b083ffee"],
     ["নীপবন","2:51","https://suno.com/embed/ebb40b50-038a-45f4-a326-4414fe80107a","https://suno.com/song/ebb40b50-038a-45f4-a326-4414fe80107a"],
     ["Halloween Resonance","2:37","https://suno.com/embed/cc053039-1042-4ffc-8baa-51930ed11726","https://suno.com/song/cc053039-1042-4ffc-8baa-51930ed11726"],
