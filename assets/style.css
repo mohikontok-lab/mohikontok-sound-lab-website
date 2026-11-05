@@ -61,14 +61,20 @@ section { margin-bottom: 3rem; }
 /* Hero: mixer photo with a dark gradient so white text stays readable. */
 .hero-banner {
   position: relative;
+  display: flex;
+  min-height: 34rem;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
 }
 .hero-banner img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .hero-banner::after {
   content: "";
@@ -77,8 +83,7 @@ section { margin-bottom: 3rem; }
   background: linear-gradient(90deg, rgba(10, 8, 10, 0.92) 0%, rgba(10, 8, 10, 0.78) 55%, rgba(10, 8, 10, 0.35) 100%);
 }
 .hero-copy {
-  position: absolute;
-  inset: 0;
+  position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -171,7 +176,9 @@ form input[type="checkbox"] { display: inline; width: auto; }
 .skyline { display: block; margin: 0 auto 0.75rem; }
 
 @media (max-width: 640px) {
-  .hero-copy { padding: 1.25rem; }
+  .hero-banner { display: block; min-height: 0; }
+  .hero-banner img { position: static; height: auto; object-fit: contain; }
+  .hero-copy { padding: 1.25rem; background: #0a080a; }
   .hero-copy h1 { font-size: 1.7rem; }
   .hero-copy .lede { font-size: 1rem; }
 }
