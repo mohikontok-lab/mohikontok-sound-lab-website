@@ -14,6 +14,26 @@
 <title>Rehearsal Space Bronx | Mohikontok Sound Lab</title>
 <meta name="description" content="Rehearsal space in the Bronx at Mohikontok Sound Lab: book a room by the hour for band rehearsal and practice. A red-and-black live room and a white-brick literary booth for spoken poetry and voiceover.">
 <link rel="stylesheet" href="assets/style.css?v=20261102">
+<style>
+  .gallery-hint { margin: 0 0 1rem; }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .gallery-item { margin: 0; }
+  .gallery-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .gallery-btn img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+  .gallery-item figcaption { margin-top: .4rem; font-size: .95rem; line-height: 1.4; }
+  .lightbox { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; gap: .5rem; background: rgba(0,0,0,.88); padding: 1rem; }
+  .lightbox[hidden] { display: none; }
+  .lightbox-figure { margin: 0; max-width: min(92vw, 900px); text-align: center; }
+  .lightbox-figure img { max-width: 100%; max-height: 78vh; width: auto; height: auto; border-radius: 8px; }
+  .lightbox-figure figcaption { color: #fff; margin-top: .6rem; }
+  .lightbox-close, .lightbox-prev, .lightbox-next { background: rgba(255,255,255,.15); color: #fff; border: 0; border-radius: 50%; width: 44px; height: 44px; font-size: 1.6rem; line-height: 1; cursor: pointer; flex: none; }
+  .lightbox-close { position: absolute; top: 1rem; right: 1rem; }
+  @media (max-width: 560px) {
+    .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; }
+    .lightbox { gap: .25rem; padding: .5rem; }
+    .lightbox-prev, .lightbox-next { width: 36px; height: 36px; font-size: 1.3rem; }
+  }
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -38,138 +58,227 @@
 
   <section aria-label="Venue photos">
     <h2>Venue photos</h2>
-    <div class="slideshow" id="venue-slideshow">
-      <div class="slides">
-        <figure class="slide is-active">
-          <img src="assets/photos/studio-01.jpg" alt="Live room: acoustic guitars on stands, red-and-black acoustic foam wall">
+    <p class="gallery-hint">Tap any photo to zoom. Use the arrows or your keyboard to move between photos.</p>
+    <div class="gallery" id="venue-gallery">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="0" aria-label="Zoom photo 1: Live room: acoustic guitars on stands, red-and-black acoustic foam wall">
+            <img src="assets/photos/studio-01.jpg" alt="Live room: acoustic guitars on stands, red-and-black acoustic foam wall" loading="lazy">
+          </button>
           <figcaption>Live room: acoustic guitars on stands, red-and-black acoustic foam wall</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-02.jpg" alt="Vocal mic with isolation shield and Roland Octapad, red-and-black live room">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="1" aria-label="Zoom photo 2: Vocal mic with isolation shield and Roland Octapad, red-and-black live room">
+            <img src="assets/photos/studio-02.jpg" alt="Vocal mic with isolation shield and Roland Octapad, red-and-black live room" loading="lazy">
+          </button>
           <figcaption>Vocal mic with isolation shield and Roland Octapad, red-and-black live room</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-03.jpg" alt="In-house percussion: drum pads and chimes, green session light">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="2" aria-label="Zoom photo 3: In-house percussion: drum pads and chimes, green session light">
+            <img src="assets/photos/studio-03.jpg" alt="In-house percussion: drum pads and chimes, green session light" loading="lazy">
+          </button>
           <figcaption>In-house percussion: drum pads and chimes, green session light</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-04.jpg" alt="Chimes and electronic drum pad in the live room">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="3" aria-label="Zoom photo 4: Chimes and electronic drum pad in the live room">
+            <img src="assets/photos/studio-04.jpg" alt="Chimes and electronic drum pad in the live room" loading="lazy">
+          </button>
           <figcaption>Chimes and electronic drum pad in the live room</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-05.jpg" alt="Roland Octapad, acoustic guitars, vocal mic and tambourine in the live room">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="4" aria-label="Zoom photo 5: Roland Octapad, acoustic guitars, vocal mic and tambourine in the live room">
+            <img src="assets/photos/studio-05.jpg" alt="Roland Octapad, acoustic guitars, vocal mic and tambourine in the live room" loading="lazy">
+          </button>
           <figcaption>Roland Octapad, acoustic guitars, vocal mic and tambourine in the live room</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-06.jpg" alt="Vocal mic on a boom, Ibanez bass, chimes and HandSonic pad">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="5" aria-label="Zoom photo 6: Vocal mic on a boom, Ibanez bass, chimes and HandSonic pad">
+            <img src="assets/photos/studio-06.jpg" alt="Vocal mic on a boom, Ibanez bass, chimes and HandSonic pad" loading="lazy">
+          </button>
           <figcaption>Vocal mic on a boom, Ibanez bass, chimes and HandSonic pad</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-07.jpg" alt="Literary corner: Bengali bookshelf and small speaker">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="6" aria-label="Zoom photo 7: Literary corner: Bengali bookshelf and small speaker">
+            <img src="assets/photos/studio-07.jpg" alt="Literary corner: Bengali bookshelf and small speaker" loading="lazy">
+          </button>
           <figcaption>Literary corner: Bengali bookshelf and small speaker</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-08.jpg" alt="Literary corner bookshelf, white-brick wall">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="7" aria-label="Zoom photo 8: Literary corner bookshelf, white-brick wall">
+            <img src="assets/photos/studio-08.jpg" alt="Literary corner bookshelf, white-brick wall" loading="lazy">
+          </button>
           <figcaption>Literary corner bookshelf, white-brick wall</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-09.jpg" alt="Literary corner bookshelf, with framed Poetry Camp poster">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="8" aria-label="Zoom photo 9: Literary corner bookshelf, with framed Poetry Camp poster">
+            <img src="assets/photos/studio-09.jpg" alt="Literary corner bookshelf, with framed Poetry Camp poster" loading="lazy">
+          </button>
           <figcaption>Literary corner bookshelf, with framed Poetry Camp poster</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-10.jpg" alt="Literary corner bookshelf, with framed Poetry Camp poster">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="9" aria-label="Zoom photo 10: Literary corner bookshelf, with framed Poetry Camp poster">
+            <img src="assets/photos/studio-10.jpg" alt="Literary corner bookshelf, with framed Poetry Camp poster" loading="lazy">
+          </button>
           <figcaption>Literary corner bookshelf, with framed Poetry Camp poster</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-11.jpg" alt="Vocal booth: condenser mic and pop filter, white-brick wall">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="10" aria-label="Zoom photo 11: Vocal booth: condenser mic and pop filter, white-brick wall">
+            <img src="assets/photos/studio-11.jpg" alt="Vocal booth: condenser mic and pop filter, white-brick wall" loading="lazy">
+          </button>
           <figcaption>Vocal booth: condenser mic and pop filter, white-brick wall</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-12.jpg" alt="Vocal booth: condenser mic and pop filter, green LED light and hex lights">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="11" aria-label="Zoom photo 12: Vocal booth: condenser mic and pop filter, green LED light and hex lights">
+            <img src="assets/photos/studio-12.jpg" alt="Vocal booth: condenser mic and pop filter, green LED light and hex lights" loading="lazy">
+          </button>
           <figcaption>Vocal booth: condenser mic and pop filter, green LED light and hex lights</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-13.jpg" alt="Vocal booth: condenser mic and pop filter, green-lit room with hex lights">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="12" aria-label="Zoom photo 13: Vocal booth: condenser mic and pop filter, green-lit room with hex lights">
+            <img src="assets/photos/studio-13.jpg" alt="Vocal booth: condenser mic and pop filter, green-lit room with hex lights" loading="lazy">
+          </button>
           <figcaption>Vocal booth: condenser mic and pop filter, green-lit room with hex lights</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-14.jpg" alt="Poetry and voiceover table: Jibanananda Das book, headphones, scripts and music stand">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="13" aria-label="Zoom photo 14: Poetry and voiceover table: Jibanananda Das book, headphones, scripts and music stand">
+            <img src="assets/photos/studio-14.jpg" alt="Poetry and voiceover table: Jibanananda Das book, headphones, scripts and music stand" loading="lazy">
+          </button>
           <figcaption>Poetry and voiceover table: Jibanananda Das book, headphones, scripts and music stand</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/studio-15.jpg" alt="Hexagon LED wall lights">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="14" aria-label="Zoom photo 15: Hexagon LED wall lights">
+            <img src="assets/photos/studio-15.jpg" alt="Hexagon LED wall lights" loading="lazy">
+          </button>
           <figcaption>Hexagon LED wall lights</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-01.jpg" alt="Live session in the red-and-black live room: electric guitar, vocals and percussion">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="15" aria-label="Zoom photo 16: Live session in the red-and-black live room: electric guitar, vocals and percussion">
+            <img src="assets/photos/venue-add-01.jpg" alt="Live session in the red-and-black live room: electric guitar, vocals and percussion" loading="lazy">
+          </button>
           <figcaption>Live session in the red-and-black live room: electric guitar, vocals and percussion</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-02.jpg" alt="Live room set for a session: guitars, microphones and a screen showing the Sound Lab logo">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="16" aria-label="Zoom photo 17: Live room set for a session: guitars, microphones and a screen showing the Sound Lab logo">
+            <img src="assets/photos/venue-add-02.jpg" alt="Live room set for a session: guitars, microphones and a screen showing the Sound Lab logo" loading="lazy">
+          </button>
           <figcaption>Live room set for a session: guitars, microphones and a screen showing the Sound Lab logo</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-03.jpg" alt="Mohikontok artwork: mountains, river and sound waves, mohikontok.com">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="17" aria-label="Zoom photo 18: Mohikontok artwork: mountains, river and sound waves, mohikontok.com">
+            <img src="assets/photos/venue-add-03.jpg" alt="Mohikontok artwork: mountains, river and sound waves, mohikontok.com" loading="lazy">
+          </button>
           <figcaption>Mohikontok artwork: mountains, river and sound waves, mohikontok.com</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-04.jpg" alt="Mohikontok Sound Lab artwork">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="18" aria-label="Zoom photo 19: Mohikontok Sound Lab artwork">
+            <img src="assets/photos/venue-add-04.jpg" alt="Mohikontok Sound Lab artwork" loading="lazy">
+          </button>
           <figcaption>Mohikontok Sound Lab artwork</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-05.jpg" alt="Artwork with the Bengali words &quot;ভালো থেকো&quot; (Bhalo Theko) and a tulip">
-          <figcaption>Artwork with the Bengali words "ভালো থেকো" (Bhalo Theko) and a tulip</figcaption>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="19" aria-label="Zoom photo 20: Artwork with the Bengali words &quot;ভালো থেকো&quot; (Bhalo Theko) and a tulip">
+            <img src="assets/photos/venue-add-05.jpg" alt="Artwork with the Bengali words &quot;ভালো থেকো&quot; (Bhalo Theko) and a tulip" loading="lazy">
+          </button>
+          <figcaption>Artwork with the Bengali words &quot;ভালো থেকো&quot; (Bhalo Theko) and a tulip</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-06.jpg" alt="Surreal black-and-white artwork: cosmic eye over a landscape">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="20" aria-label="Zoom photo 21: Surreal black-and-white artwork: cosmic eye over a landscape">
+            <img src="assets/photos/venue-add-06.jpg" alt="Surreal black-and-white artwork: cosmic eye over a landscape" loading="lazy">
+          </button>
           <figcaption>Surreal black-and-white artwork: cosmic eye over a landscape</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-07.jpg" alt="Artwork for &quot;শীত রাত মলয় সঙ্গীত&quot; (Sheet Raat Moloy Sangeet): vinyl record, guitar and microphone">
-          <figcaption>Artwork for "শীত রাত মলয় সঙ্গীত" (Sheet Raat Moloy Sangeet): vinyl record, guitar and microphone</figcaption>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="21" aria-label="Zoom photo 22: Artwork for &quot;শীত রাত মলয় সঙ্গীত&quot; (Sheet Raat Moloy Sangeet): vinyl record, guitar and microphone">
+            <img src="assets/photos/venue-add-07.jpg" alt="Artwork for &quot;শীত রাত মলয় সঙ্গীত&quot; (Sheet Raat Moloy Sangeet): vinyl record, guitar and microphone" loading="lazy">
+          </button>
+          <figcaption>Artwork for &quot;শীত রাত মলয় সঙ্গীত&quot; (Sheet Raat Moloy Sangeet): vinyl record, guitar and microphone</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-08.jpg" alt="Portrait in the studio">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="22" aria-label="Zoom photo 23: Portrait in the studio">
+            <img src="assets/photos/venue-add-08.jpg" alt="Portrait in the studio" loading="lazy">
+          </button>
           <figcaption>Portrait in the studio</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-09.jpg" alt="Mohikontok logo artwork: mountains over waves">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="23" aria-label="Zoom photo 24: Mohikontok logo artwork: mountains over waves">
+            <img src="assets/photos/venue-add-09.jpg" alt="Mohikontok logo artwork: mountains over waves" loading="lazy">
+          </button>
           <figcaption>Mohikontok logo artwork: mountains over waves</figcaption>
         </figure>
-        <figure class="slide">
-          <img src="assets/photos/venue-add-10.jpg" alt="Live room: guitars and microphone boom against the red-and-black foam wall">
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="24" aria-label="Zoom photo 25: Live room: guitars and microphone boom against the red-and-black foam wall">
+            <img src="assets/photos/venue-add-10.jpg" alt="Live room: guitars and microphone boom against the red-and-black foam wall" loading="lazy">
+          </button>
           <figcaption>Live room: guitars and microphone boom against the red-and-black foam wall</figcaption>
         </figure>
-      </div>
-      <button class="slide-prev" type="button" aria-label="Previous photo">&#8249;</button>
-      <button class="slide-next" type="button" aria-label="Next photo">&#8250;</button>
-      <div class="slide-dots" role="group" aria-label="Choose a photo">
-        <button type="button" class="dot is-active" aria-label="Go to photo 1"></button>
-        <button type="button" class="dot" aria-label="Go to photo 2"></button>
-        <button type="button" class="dot" aria-label="Go to photo 3"></button>
-        <button type="button" class="dot" aria-label="Go to photo 4"></button>
-        <button type="button" class="dot" aria-label="Go to photo 5"></button>
-        <button type="button" class="dot" aria-label="Go to photo 6"></button>
-        <button type="button" class="dot" aria-label="Go to photo 7"></button>
-        <button type="button" class="dot" aria-label="Go to photo 8"></button>
-        <button type="button" class="dot" aria-label="Go to photo 9"></button>
-        <button type="button" class="dot" aria-label="Go to photo 10"></button>
-        <button type="button" class="dot" aria-label="Go to photo 11"></button>
-        <button type="button" class="dot" aria-label="Go to photo 12"></button>
-        <button type="button" class="dot" aria-label="Go to photo 13"></button>
-        <button type="button" class="dot" aria-label="Go to photo 14"></button>
-        <button type="button" class="dot" aria-label="Go to photo 15"></button>
-        <button type="button" class="dot" aria-label="Go to photo 16"></button>
-        <button type="button" class="dot" aria-label="Go to photo 17"></button>
-        <button type="button" class="dot" aria-label="Go to photo 18"></button>
-        <button type="button" class="dot" aria-label="Go to photo 19"></button>
-        <button type="button" class="dot" aria-label="Go to photo 20"></button>
-        <button type="button" class="dot" aria-label="Go to photo 21"></button>
-        <button type="button" class="dot" aria-label="Go to photo 22"></button>
-        <button type="button" class="dot" aria-label="Go to photo 23"></button>
-        <button type="button" class="dot" aria-label="Go to photo 24"></button>
-        <button type="button" class="dot" aria-label="Go to photo 25"></button>
-      </div>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="25" aria-label="Zoom photo 26: Live room session: keyboard, vocal mic on a boom, and bass guitar against the red-and-black foam wall">
+            <img src="assets/photos/venue-add-11.jpg" alt="Live room session: keyboard, vocal mic on a boom, and bass guitar against the red-and-black foam wall" loading="lazy">
+          </button>
+          <figcaption>Live room session: keyboard, vocal mic on a boom, and bass guitar against the red-and-black foam wall</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="26" aria-label="Zoom photo 27: Reciting at the microphone in the live room, black backdrop and brick wall">
+            <img src="assets/photos/venue-add-12.jpg" alt="Reciting at the microphone in the live room, black backdrop and brick wall" loading="lazy">
+          </button>
+          <figcaption>Reciting at the microphone in the live room, black backdrop and brick wall</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="27" aria-label="Zoom photo 28: Live room session: one performer at the keyboard, one at the vocal mic">
+            <img src="assets/photos/venue-add-13.jpg" alt="Live room session: one performer at the keyboard, one at the vocal mic" loading="lazy">
+          </button>
+          <figcaption>Live room session: one performer at the keyboard, one at the vocal mic</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="28" aria-label="Zoom photo 29: Open-house invitation poster: “You’re Invited! Come visit our house” — 1389 Kearney Ave, Bronx">
+            <img src="assets/photos/venue-add-14.jpg" alt="Open-house invitation poster: “You’re Invited! Come visit our house” — 1389 Kearney Ave, Bronx" loading="lazy">
+          </button>
+          <figcaption>Open-house invitation poster: “You’re Invited! Come visit our house” — 1389 Kearney Ave, Bronx</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="29" aria-label="Zoom photo 30: Beyerdynamic DT 770 PRO studio headphones (80 ohm)">
+            <img src="assets/photos/venue-add-15.jpg" alt="Beyerdynamic DT 770 PRO studio headphones (80 ohm)" loading="lazy">
+          </button>
+          <figcaption>Beyerdynamic DT 770 PRO studio headphones (80 ohm)</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="30" aria-label="Zoom photo 31: Reciting at the microphone in the white-brick vocal booth">
+            <img src="assets/photos/venue-add-16.jpg" alt="Reciting at the microphone in the white-brick vocal booth" loading="lazy">
+          </button>
+          <figcaption>Reciting at the microphone in the white-brick vocal booth</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="31" aria-label="Zoom photo 32: In the vocal booth, reading from a phone at the microphone, blue light">
+            <img src="assets/photos/venue-add-17.jpg" alt="In the vocal booth, reading from a phone at the microphone, blue light" loading="lazy">
+          </button>
+          <figcaption>In the vocal booth, reading from a phone at the microphone, blue light</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="32" aria-label="Zoom photo 33: In the vocal booth with an acoustic guitar, bookshelf behind">
+            <img src="assets/photos/venue-add-18.jpg" alt="In the vocal booth with an acoustic guitar, bookshelf behind" loading="lazy">
+          </button>
+          <figcaption>In the vocal booth with an acoustic guitar, bookshelf behind</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="33" aria-label="Zoom photo 34: Nipobon Visit invitation poster — Sunday, October 4, 2026, 5:00 PM, 1389 Kearney Ave, Bronx">
+            <img src="assets/photos/venue-add-19.jpg" alt="Nipobon Visit invitation poster — Sunday, October 4, 2026, 5:00 PM, 1389 Kearney Ave, Bronx" loading="lazy">
+          </button>
+          <figcaption>Nipobon Visit invitation poster — Sunday, October 4, 2026, 5:00 PM, 1389 Kearney Ave, Bronx</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <button type="button" class="gallery-btn" data-index="34" aria-label="Zoom photo 35: Moloya — video artwork: “মলয়া moloya By MONIR”">
+            <img src="assets/photos/venue-add-20.jpg" alt="Moloya — video artwork: “মলয়া moloya By MONIR”" loading="lazy">
+          </button>
+          <figcaption>Moloya — video artwork: “মলয়া moloya By MONIR”</figcaption>
+        </figure>
+    </div>
+    <div class="lightbox" id="venue-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+      <button type="button" class="lightbox-close" aria-label="Close viewer">&times;</button>
+      <button type="button" class="lightbox-prev" aria-label="Previous photo">&#8249;</button>
+      <figure class="lightbox-figure">
+        <img id="lightbox-img" src="" alt="">
+        <figcaption id="lightbox-caption"></figcaption>
+      </figure>
+      <button type="button" class="lightbox-next" aria-label="Next photo">&#8250;</button>
     </div>
   </section>
 
@@ -185,30 +294,37 @@
 
 <script>
   (function () {
-    var root = document.getElementById("venue-slideshow");
-    if (!root) return;
-    var slides = root.querySelectorAll(".slide");
-    var dots = root.querySelectorAll(".dot");
-    var current = 0, timer = null;
-    function show(n) {
-      slides[current].classList.remove("is-active");
-      dots[current].classList.remove("is-active");
-      current = (n + slides.length) % slides.length;
-      slides[current].classList.add("is-active");
-      dots[current].classList.add("is-active");
-    }
-    function restart() {
-      clearInterval(timer);
-      timer = setInterval(function () { show(current + 1); }, 6000);
-    }
-    root.querySelector(".slide-prev").addEventListener("click", function () { show(current - 1); restart(); });
-    root.querySelector(".slide-next").addEventListener("click", function () { show(current + 1); restart(); });
-    dots.forEach(function (dot, i) {
-      dot.addEventListener("click", function () { show(i); restart(); });
+    var items = [];
+    document.querySelectorAll("#venue-gallery .gallery-item").forEach(function (fig) {
+      var img = fig.querySelector("img");
+      items.push({ src: img.getAttribute("src"), alt: img.getAttribute("alt") });
     });
-    root.addEventListener("mouseenter", function () { clearInterval(timer); });
-    root.addEventListener("mouseleave", restart);
-    restart();
+    var box = document.getElementById("venue-lightbox");
+    var img = document.getElementById("lightbox-img");
+    var cap = document.getElementById("lightbox-caption");
+    var current = 0;
+    function open(i) {
+      current = (i + items.length) % items.length;
+      img.src = items[current].src;
+      img.alt = items[current].alt;
+      cap.textContent = items[current].alt + "  (" + (current + 1) + " of " + items.length + ")";
+      box.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+    function close() { box.hidden = true; document.body.style.overflow = ""; }
+    document.querySelectorAll("#venue-gallery .gallery-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () { open(parseInt(btn.getAttribute("data-index"), 10)); });
+    });
+    box.querySelector(".lightbox-close").addEventListener("click", close);
+    box.querySelector(".lightbox-prev").addEventListener("click", function () { open(current - 1); });
+    box.querySelector(".lightbox-next").addEventListener("click", function () { open(current + 1); });
+    box.addEventListener("click", function (e) { if (e.target === box) close(); });
+    document.addEventListener("keydown", function (e) {
+      if (box.hidden) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") open(current - 1);
+      if (e.key === "ArrowRight") open(current + 1);
+    });
   })();
 </script>
 </body>
