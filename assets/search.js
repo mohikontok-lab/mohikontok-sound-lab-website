@@ -91,7 +91,7 @@
         mail.href = "mailto:studio@mohikontok.com";
         mail.textContent = "studio@mohikontok.com";
         contact.appendChild(mail);
-        contact.appendChild(document.createTextNode(" or call (347) 497-3589."));
+        contact.appendChild(document.createTextNode(" or call (551) 266-3479."));
         resultsEl.appendChild(heading);
         resultsEl.appendChild(hint);
         resultsEl.appendChild(buttons);
