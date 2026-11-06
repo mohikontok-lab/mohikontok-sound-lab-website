@@ -52,24 +52,51 @@
 
       resultsEl.innerHTML = "";
       if (!scored.length) {
-        setStatus("No results for “" + query + "”. Try another word — or start here:");
-        var popular = [
+        // No results: styled like the custom 404 page (Nov 5, 2026) —
+        // heading, explanation, two buttons, a row of links, contact line.
+        setStatus("");
+        var heading = document.createElement("h2");
+        heading.textContent = "Nothing found for “" + query + "”";
+        var hint = document.createElement("p");
+        hint.textContent = "Try another word, or start here instead:";
+        var buttons = document.createElement("p");
+        var homeBtn = document.createElement("a");
+        homeBtn.className = "button";
+        homeBtn.href = "index.html";
+        homeBtn.textContent = "Back to the Home Page";
+        var studioBtn = document.createElement("a");
+        studioBtn.className = "button outline";
+        studioBtn.href = "venue.html";
+        studioBtn.textContent = "See the Studio";
+        buttons.appendChild(homeBtn);
+        buttons.appendChild(document.createTextNode(" "));
+        buttons.appendChild(studioBtn);
+        var links = document.createElement("p");
+        [
           ["Book a session", "index.html#booking"],
-          ["Recording studio prices", "bronx-recording-studio-prices.html"],
-          ["Bengali music", "music.html"],
-          ["Rehearsal space", "rehearsal-space-bronx.html"]
-        ];
-        var list = document.createElement("ul");
-        list.className = "search-results";
-        popular.forEach(function (item) {
-          var li = document.createElement("li");
+          ["Listen to the music", "music.html"],
+          ["Watch videos", "videos.html"],
+          ["Contact the studio", "contact.html"],
+          ["Full site map", "sitemap.html"]
+        ].forEach(function (item, i) {
+          if (i) links.appendChild(document.createTextNode(" • "));
           var a = document.createElement("a");
           a.href = item[1];
           a.textContent = item[0];
-          li.appendChild(a);
-          list.appendChild(li);
+          links.appendChild(a);
         });
-        resultsEl.appendChild(list);
+        var contact = document.createElement("p");
+        contact.appendChild(document.createTextNode("Looking for something else? Email "));
+        var mail = document.createElement("a");
+        mail.href = "mailto:studio@mohikontok.com";
+        mail.textContent = "studio@mohikontok.com";
+        contact.appendChild(mail);
+        contact.appendChild(document.createTextNode(" or call (347) 497-3589."));
+        resultsEl.appendChild(heading);
+        resultsEl.appendChild(hint);
+        resultsEl.appendChild(buttons);
+        resultsEl.appendChild(links);
+        resultsEl.appendChild(contact);
         return;
       }
 
