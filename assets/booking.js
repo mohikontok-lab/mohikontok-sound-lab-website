@@ -65,4 +65,55 @@
       if (error) error.hidden = false;
     }
   });
+
+  // FormSubmit has had Cloudflare 522 outages (Nov 5, 2026: its origin
+  // stopped responding, so a plain form post landed on a Cloudflare error
+  // page and the booking was lost). Send through its AJAX endpoint with a
+  // 12-second timeout instead: on success, go to the confirmation page as
+  // before; on any failure, show the fallback with a prefilled email so the
+  // booking isn't lost. Without fetch, the form posts natively as before.
+  var fallback = document.getElementById("booking-fallback");
+  var mailto = document.getElementById("booking-mailto");
+  form.addEventListener("submit", function (ev) {
+    if (!updateEstimate()) return; // invalid: the handler above already blocked it
+    if (!window.fetch || !window.AbortController) return;
+    ev.preventDefault();
+    if (submitBtn) submitBtn.disabled = true;
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 12000);
+    var data = new FormData(form);
+    fetch("https://formsubmit.co/ajax/studio@mohikontok.com", {
+      method: "POST",
+      body: data,
+      signal: controller.signal,
+      headers: { Accept: "application/json" }
+    })
+      .then(function (resp) {
+        clearTimeout(timer);
+        if (!resp.ok) throw new Error("FormSubmit error " + resp.status);
+        return resp.json();
+      })
+      .then(function () {
+        window.location.href = "https://mohikontok.com/index.html?booked=1";
+      })
+      .catch(function () {
+        clearTimeout(timer);
+        if (submitBtn) submitBtn.disabled = false;
+        if (mailto) {
+          var lines = [];
+          data.forEach(function (v, k) {
+            if (k.charAt(0) !== "_") lines.push(k + ": " + v);
+          });
+          mailto.href =
+            "mailto:studio@mohikontok.com?subject=" +
+            encodeURIComponent("Booking request — Mohikontok Sound Lab") +
+            "&body=" +
+            encodeURIComponent(lines.join("\n"));
+        }
+        if (fallback) {
+          fallback.hidden = false;
+          fallback.scrollIntoView({ block: "center" });
+        }
+      });
+  });
 })();

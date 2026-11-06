@@ -69,6 +69,7 @@
       <label>Email <input type="email" name="Email" required></label>
       <button class="button" type="submit">Subscribe</button>
     </form>
+    <p id="subscribe-fallback" class="result" hidden>The subscription service isn't responding right now, so you weren't subscribed. Please <a id="subscribe-mailto" href="mailto:studio@mohikontok.com">email the studio instead</a> — your details are already filled in — and we'll add you.</p>
     <p class="note">Mohikontok Sound Lab, 1389 Kearney Ave, Bronx, NY 10465 &bull; (347) 497-3589 &bull; studio@mohikontok.com &bull; Open 24/7. <a href="../index.html#booking">Book a session</a>.</p>
   </article>
 </main>
@@ -85,6 +86,58 @@
   if (new URLSearchParams(window.location.search).get("subscribed") === "1") {
     document.getElementById("subscribed-banner").hidden = false;
   }
+
+  // Same FormSubmit outage fallback as the booking form (Nov 5, 2026: the
+  // service's origin stopped responding behind Cloudflare, error 522, so a
+  // plain post lost the subscription). Try its AJAX endpoint with a 12-second
+  // timeout; on any failure show the fallback with a prefilled email instead.
+  (function () {
+    var form = document.getElementById("subscribe-form");
+    if (!form || !window.fetch || !window.AbortController) return;
+    var fallback = document.getElementById("subscribe-fallback");
+    var mailto = document.getElementById("subscribe-mailto");
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
+      var controller = new AbortController();
+      var timer = setTimeout(function () { controller.abort(); }, 12000);
+      var data = new FormData(form);
+      fetch("https://formsubmit.co/ajax/studio@mohikontok.com", {
+        method: "POST",
+        body: data,
+        signal: controller.signal,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (resp) {
+          clearTimeout(timer);
+          if (!resp.ok) throw new Error("FormSubmit error " + resp.status);
+          return resp.json();
+        })
+        .then(function () {
+          window.location.href = "https://mohikontok.com/posts/weekly-dispatches.html?subscribed=1";
+        })
+        .catch(function () {
+          clearTimeout(timer);
+          if (btn) btn.disabled = false;
+          if (mailto) {
+            var lines = [];
+            data.forEach(function (v, k) {
+              if (k.charAt(0) !== "_") lines.push(k + ": " + v);
+            });
+            mailto.href =
+              "mailto:studio@mohikontok.com?subject=" +
+              encodeURIComponent("Newsletter subscription — Mohikontok Sound Lab") +
+              "&body=" +
+              encodeURIComponent(lines.join("\n"));
+          }
+          if (fallback) {
+            fallback.hidden = false;
+            fallback.scrollIntoView({ block: "center" });
+          }
+        });
+    });
+  })();
 </script>
 </body>
 </html>
