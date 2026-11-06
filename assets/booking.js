@@ -70,10 +70,9 @@
   // stopped responding, so a plain form post landed on a Cloudflare error
   // page and the booking was lost). Send through its AJAX endpoint with a
   // 12-second timeout instead: on success, go to the confirmation page as
-  // before; on any failure, show the fallback with a prefilled email so the
-  // booking isn't lost. Without fetch, the form posts natively as before.
-  var fallback = document.getElementById("booking-fallback");
-  var mailto = document.getElementById("booking-mailto");
+  // before; on any failure, save the visitor's details and send them to the
+  // "try again in an hour" page, which pre-fills an email to the studio so
+  // the booking isn't lost. Without fetch, the form posts natively as before.
   form.addEventListener("submit", function (ev) {
     if (!updateEstimate()) return; // invalid: the handler above already blocked it
     if (!window.fetch || !window.AbortController) return;
@@ -99,21 +98,16 @@
       .catch(function () {
         clearTimeout(timer);
         if (submitBtn) submitBtn.disabled = false;
-        if (mailto) {
-          var lines = [];
-          data.forEach(function (v, k) {
-            if (k.charAt(0) !== "_") lines.push(k + ": " + v);
-          });
-          mailto.href =
-            "mailto:studio@mohikontok.com?subject=" +
-            encodeURIComponent("Booking request — Mohikontok Sound Lab") +
-            "&body=" +
-            encodeURIComponent(lines.join("\n"));
-        }
-        if (fallback) {
-          fallback.hidden = false;
-          fallback.scrollIntoView({ block: "center" });
-        }
+        try {
+          if (window.sessionStorage) {
+            var lines = [];
+            data.forEach(function (v, k) {
+              if (k.charAt(0) !== "_") lines.push(k + ": " + v);
+            });
+            sessionStorage.setItem("mohikontok-booking", JSON.stringify(lines));
+          }
+        } catch (e) { /* the page still works without the saved details */ }
+        window.location.href = "https://mohikontok.com/booking-unavailable.html";
       });
   });
 })();
