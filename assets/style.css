@@ -205,3 +205,15 @@ form input[type="checkbox"] { display: inline; width: auto; }
   .site-search { flex: 1 1 100%; }
   .site-search input[type="search"] { flex: 1; width: auto; }
 }
+
+/* Sticky tap-to-call bar — mobile only (added 2026-11-09) */
+.sticky-call { display: none; }
+@media (max-width: 700px) {
+  .sticky-call {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000;
+    background: var(--accent); color: #ffffff; text-align: center;
+    padding: 0.9rem 1rem; font-weight: bold; text-decoration: none;
+    border-top: 2px solid var(--gold);
+  }
+  body { padding-bottom: 3.5rem; }
+}
