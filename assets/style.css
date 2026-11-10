@@ -68,13 +68,13 @@ section { margin-bottom: 3rem; }
   border: 1px solid var(--border);
   background: #0a080a;
 }
-.hero-banner img {
+.hero-banner video {
   position: absolute;
   inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 .hero-banner::after {
@@ -82,23 +82,6 @@ section { margin-bottom: 3rem; }
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgba(10, 8, 10, 0.92) 0%, rgba(10, 8, 10, 0.78) 55%, rgba(10, 8, 10, 0.35) 100%);
-}
-/* Golden glow that slowly breathes over the hero photo. */
-.hero-glow {
-  position: absolute;
-  inset: -4%;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse 68% 60% at 68% 42%, rgba(245, 197, 24, 0.75) 0%, rgba(245, 197, 24, 0.35) 45%, rgba(245, 197, 24, 0) 75%);
-  opacity: 0.3;
-  animation: heroGlow 6s ease-in-out infinite alternate;
-}
-@keyframes heroGlow {
-  from { opacity: 0.3; transform: scale(1); }
-  to { opacity: 0.85; transform: scale(1.04); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-glow { animation: none; opacity: 0.5; }
 }
 .hero-copy {
   position: relative;
@@ -195,7 +178,7 @@ form input[type="checkbox"] { display: inline; width: auto; }
 
 @media (max-width: 640px) {
   .hero-banner { display: block; min-height: 0; }
-  .hero-banner img { position: static; height: auto; object-fit: contain; }
+  .hero-banner video { position: static; height: auto; }
   .hero-copy { padding: 1.25rem; background: #0a080a; }
   .hero-copy h1 { font-size: 1.7rem; }
   .hero-copy .lede { font-size: 1rem; }
