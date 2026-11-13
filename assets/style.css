@@ -176,6 +176,11 @@ form input[type="checkbox"] { display: inline; width: auto; }
 }
 .site-footer p { margin: 0.25rem 0; }
 .skyline { display: block; margin: 0 auto 0.75rem; }
+.site-footer p.footer-social { display: flex; justify-content: center; gap: 1.1rem; margin: 0.6rem 0 0.3rem; }
+.footer-social a { display: inline-flex; line-height: 0; }
+.footer-social a:hover { color: #ffffff; }
+.footer-social svg { width: 28px; height: 28px; }
+
 
 @media (max-width: 640px) {
   .hero-banner { display: block; min-height: 0; }
