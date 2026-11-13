@@ -147,6 +147,7 @@ h2 {
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 .card h3 { margin-top: 0; }
+.testimonial-photo { display: block; width: 96px; height: 96px; object-fit: cover; border-radius: 50%; margin: 0 auto 0.75rem; border: 2px solid var(--gold); }
 .rate { font-size: 1.5rem; font-weight: 800; color: var(--gold); margin: 0.25rem 0; }
 
 form label { display: block; margin-bottom: 0.9rem; font-weight: 600; }
