@@ -26,6 +26,42 @@
     return h > 0 ? h : 0;
   }
 
+  // The time selects show AM/PM labels ("7:00 PM") but submit 24-hour
+  // values ("19:00"), and FormSubmit echoes the raw values in the email.
+  // Report the label the visitor actually picked, so the booking email
+  // reads in regular 12-hour time.
+  function selectedLabel(el) {
+    if (!el || !el.value) return null;
+    var opt = el.options[el.selectedIndex];
+    return opt ? opt.text : null;
+  }
+
+  // "2026-11-20" -> "Friday, November 20, 2026". Anchored on UTC so the
+  // calendar date is the one entered, whatever the visitor's timezone.
+  function formatDateLong(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || "");
+    if (!m) return v;
+    var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return days[d.getUTCDay()] + ", " + months[d.getUTCMonth()] + " " + (+m[3]) + ", " + m[1];
+  }
+
+  // Submission moment in New York local time, e.g. "Sunday, November 15,
+  // 2026 at 9:39 PM EST". FormSubmit's own "Submitted at" footer is UTC
+  // and can't be changed, so this row carries the local time instead.
+  function formatSubmittedAt(d) {
+    try {
+      return new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        weekday: "long", year: "numeric", month: "long", day: "numeric",
+        hour: "numeric", minute: "2-digit", hour12: true, timeZoneName: "short"
+      }).format(d);
+    } catch (e) {
+      return d.toString();
+    }
+  }
+
   function updateEstimate() {
     var rate = parseFloat(room.options[room.selectedIndex].dataset.rate) || 0;
     if (musician.checked) rate += 30;
@@ -81,6 +117,16 @@
     var controller = new AbortController();
     var timer = setTimeout(function () { controller.abort(); }, 12000);
     var data = new FormData(form);
+    // Report times the way the visitor saw them: 12-hour AM/PM, a
+    // spelled-out date, and the submission moment in New York time.
+    // (The estimate math above still uses the raw 24-hour values.)
+    var startLabel = selectedLabel(start);
+    var endLabel = selectedLabel(end);
+    if (startLabel) data.set("Start time", startLabel);
+    if (endLabel) data.set("End time", endLabel);
+    var dateVal = data.get("Date");
+    if (dateVal) data.set("Date", formatDateLong(dateVal));
+    data.set("Submitted New York time", formatSubmittedAt(new Date()));
     fetch("https://formsubmit.co/ajax/studio@mohikontok.com", {
       method: "POST",
       body: data,
