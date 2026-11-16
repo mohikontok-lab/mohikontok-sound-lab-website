@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXD08T1BN7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXD08T1BN7');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohikontok Radio — Bangla Music Radio from the Bronx | Mohikontok Sound Lab</title>
+<meta name="description" content="Mohikontok Radio: 27 Suno songs from the Bronx studio, playing in themed blocks around the clock — morning instrumentals, afternoon songs, evening poetry and raga, night resonance. Press play and listen.">
+<link rel="stylesheet" href="assets/style.css?v=20261113a">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><img class="site-logo" src="assets/logo-neon-round.webp?v=20261107a" alt="Mohikontok Sound Lab logo"> <span>Sound Lab</span></div>
+  <nav class="site-nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="venue.html">Venue</a>
+    <a href="music.html">Music</a>
+    <a href="radio.html" aria-current="page">Radio</a>
+    <a href="videos.html">Videos</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+  <form class="site-search" action="search.html" method="get" role="search">
+    <label class="visually-hidden" for="site-search-input">Search the site</label>
+    <input type="search" id="site-search-input" name="q" placeholder="Search the site…" required>
+    <button class="button" type="submit">Search</button>
+  </form>
+</header>
+
+<main>
+  <section>
+    <h1>Mohikontok Radio</h1>
+    <p class="lede">Bangla music radio from the Bronx — 27 songs by Sound Lab (@mohikontok on Suno), playing in themed blocks around the clock. Press Start the Radio, then press Play inside the Suno player.</p>
+    <p>Want your song on this station? Record at the studio — <a href="tel:+15512663479">call (551) 266-3479</a>.</p>
+  </section>
+
+  <section aria-label="On air now">
+    <div class="card">
+      <p id="onAirBlock"><strong>On air now:</strong> see the schedule below. All times are Eastern.</p>
+      <h3 id="radioNowPlaying">Now playing: 1. Piano Under the Tree (1:17)</h3>
+      <p id="radioUpNext">Up next: —</p>
+      <iframe id="radioPlayer" src="https://suno.com/embed/c82e6c83-b3dd-4fa2-9e20-d507f38dc0e5" height="200" style="width:100%;border:0;background:#000" title="Mohikontok Radio player" allow="autoplay; encrypted-media"></iframe>
+      <p>
+        <button type="button" class="button" id="radioModeBtn">▶ Start the Radio</button>
+        <button type="button" class="button" id="radioPrev">⏮ Previous</button>
+        <button type="button" class="button" id="radioNext">Next ⏭</button>
+        <button type="button" class="button outline" id="radioShuffle">Shuffle</button>
+      </p>
+      <p class="note">Radio mode moves to the next track automatically, on a timer set to each song's length — Suno's embed does not tell this page when a track ends. If a track loads but doesn't start playing on its own, press Play inside the Suno player. <a id="radioOpenOnSuno" href="https://suno.com/song/c82e6c83-b3dd-4fa2-9e20-d507f38dc0e5">Open this song on Suno</a></p>
+      <h3>Just played</h3>
+      <p id="radioJustPlayed" class="note">Nothing played yet this visit.</p>
+    </div>
+  </section>
+
+  <section aria-label="Radio schedule">
+    <h2>Schedule — every day, Eastern Time</h2>
+    <div class="card">
+      <h3>Morning Light — 6:00 AM – 12:00 PM</h3>
+      <p>Gentle instrumentals to start the day — piano, fingerstyle guitar, and dawn songs. 6 songs · 10:48.</p>
+    </div>
+    <div class="card">
+      <h3>Afternoon Blend — 12:00 PM – 6:00 PM</h3>
+      <p>A mix of songs for the middle of the day — vocals, guitar, and stories. 7 songs · 17:17.</p>
+    </div>
+    <div class="card">
+      <h3>Evening Poetry &amp; Raga — 6:00 PM – 12:00 AM</h3>
+      <p>Poetry readings, ragas, and a Sufi story for the evening. 8 songs · 16:36.</p>
+    </div>
+    <div class="card">
+      <h3>Night Resonance — 12:00 AM – 6:00 AM</h3>
+      <p>Slow, atmospheric tracks and lullabies for the night hours. 6 songs · 21:44.</p>
+    </div>
+    <p class="note">The station plays the full rotation of 27 songs (1:06:25) in block order, starting from whichever block is on air when you tune in.</p>
+  </section>
+
+  <section aria-label="All songs by block">
+    <h2>All songs, by block</h2>
+    <div id="radioTrackGroups"></div>
+    <p class="note">Note: the two “Fingerpicked Pulse” entries are two different songs (2:33 and 2:04). <a href="https://suno.com/@mohikontok">See all 188 songs on Suno</a></p>
+  </section>
+
+  <section aria-label="Request a song">
+    <h2>Request a song</h2>
+    <p id="requestThanks" class="note" hidden>Thanks — your request is in. We'll be in touch.</p>
+    <form id="request-form" action="https://formsubmit.co/studio@mohikontok.com" method="POST">
+      <input type="hidden" name="_subject" value="Song request — Mohikontok Radio">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://mohikontok.com/radio.html?requested=1">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_autoresponse" value="Thanks for your song request to Mohikontok Radio — we'll be in touch.">
+      <input type="text" name="_honey" style="display:none">
+      <label>Name <input type="text" name="Name" required></label>
+      <label>Email <input type="email" name="Email" required></label>
+      <label>Song you'd like to hear <input type="text" name="Song request" placeholder="Song title, or a Suno link" required></label>
+      <label>Message <textarea name="Message" rows="3" placeholder="Anything else — an occasion, a dedication, a show idea"></textarea></label>
+      <p><button class="button" type="submit">Send request</button></p>
+    </form>
+  </section>
+</main>
+
+<script>
+const radioTracks = [
+["Piano Under the Tree","1:17","https://suno.com/embed/c82e6c83-b3dd-4fa2-9e20-d507f38dc0e5","https://suno.com/song/c82e6c83-b3dd-4fa2-9e20-d507f38dc0e5"],
+["Poetry reading and recording workshop","3:54","https://suno.com/embed/7e68ea68-286f-493a-9b82-1b7fcfd6d6f4","https://suno.com/song/7e68ea68-286f-493a-9b82-1b7fcfd6d6f4"],
+["Spotlight on Excellence","1:20","https://suno.com/embed/26adea44-8658-4570-b7b8-669611c7c715","https://suno.com/song/26adea44-8658-4570-b7b8-669611c7c715"],
+["অদ্ভুত হওয়ার রথ","3:29","https://suno.com/embed/d33142d1-68e3-47b9-823b-5e5313207cd1","https://suno.com/song/d33142d1-68e3-47b9-823b-5e5313207cd1"],
+["Instrument intro নদী ভরা ঢেউ","1:47","https://suno.com/embed/90d6207a-e20b-42a4-9183-318abc706239","https://suno.com/song/90d6207a-e20b-42a4-9183-318abc706239"],
+["হে কবি, হে আমার স্রষ্টা","0:42","https://suno.com/embed/344f5186-d1cb-4398-bea2-3e0fbef31ddc","https://suno.com/song/344f5186-d1cb-4398-bea2-3e0fbef31ddc"],
+["Bleak Gale Resonance","3:14","https://suno.com/embed/3f81516a-2117-43e4-abd6-66a82a454843","https://suno.com/song/3f81516a-2117-43e4-abd6-66a82a454843"],
+["বনহংসী হতে যদি তুমি","1:59","https://suno.com/embed/a8203093-da50-4b23-b5f3-3f91b083ffee","https://suno.com/song/a8203093-da50-4b23-b5f3-3f91b083ffee"],
+["নীপবন","2:51","https://suno.com/embed/ebb40b50-038a-45f4-a326-4414fe80107a","https://suno.com/song/ebb40b50-038a-45f4-a326-4414fe80107a"],
+["ভোর হবেই","0:22","https://suno.com/embed/15eac69a-5c19-42c9-a3e0-2b0c8f72ee6f","https://suno.com/song/15eac69a-5c19-42c9-a3e0-2b0c8f72ee6f"],
+["Halloween Resonance","2:37","https://suno.com/embed/cc053039-1042-4ffc-8baa-51930ed11726","https://suno.com/song/cc053039-1042-4ffc-8baa-51930ed11726"],
+["Loye jao amay","4:24","https://suno.com/embed/b8e44d63-24c4-4c6a-855f-52b3328c135c","https://suno.com/song/b8e44d63-24c4-4c6a-855f-52b3328c135c"],
+["সিন্ধু তীরে","1:36","https://suno.com/embed/76fb4b43-9dc1-4288-8347-7b284d2ba79d","https://suno.com/song/76fb4b43-9dc1-4288-8347-7b284d2ba79d"],
+["Sound Tide","3:09","https://suno.com/embed/e21b62c6-1efc-49ff-a4e2-b61946e5336a","https://suno.com/song/e21b62c6-1efc-49ff-a4e2-b61946e5336a"],
+["শত্রুতা করবার সময়","0:45","https://suno.com/embed/e02487b9-c4f4-402f-981c-eb43b1176ba9","https://suno.com/song/e02487b9-c4f4-402f-981c-eb43b1176ba9"],
+["Neon Horizon","1:51","https://suno.com/embed/d190df67-9dbd-4b6d-964a-62a3d5b3bd1d","https://suno.com/song/d190df67-9dbd-4b6d-964a-62a3d5b3bd1d"],
+["অমরত্ব কাউকেই আমি দেইনি","1:48","https://suno.com/embed/68aad6c5-31e1-46a3-a392-5b419ba9b048","https://suno.com/song/68aad6c5-31e1-46a3-a392-5b419ba9b048"],
+["Slowe Fingerstyle","2:13","https://suno.com/embed/a1b952c0-b882-4657-ad25-799fe98a30fb","https://suno.com/song/a1b952c0-b882-4657-ad25-799fe98a30fb"],
+["Slow Fingerstyle","2:18","https://suno.com/embed/fbe93402-eb52-4f5a-9360-aefe4f1527c6","https://suno.com/song/fbe93402-eb52-4f5a-9360-aefe4f1527c6"],
+["Melodic Riff","2:18","https://suno.com/embed/03312a84-bf81-403b-b2b8-16ed9af0d446","https://suno.com/song/03312a84-bf81-403b-b2b8-16ed9af0d446"],
+["Fingerpicked Pulse","2:33","https://suno.com/embed/b16e07af-9c38-4fa2-8d19-3e6161d2213f","https://suno.com/song/b16e07af-9c38-4fa2-8d19-3e6161d2213f"],
+["Fingerpicked Pulse","2:04","https://suno.com/embed/c3172081-c76b-481b-8dd2-a09ccabb2c2d","https://suno.com/song/c3172081-c76b-481b-8dd2-a09ccabb2c2d"],
+["Fingerstyle Lullaby 2","7:59","https://suno.com/embed/12df90ac-95ba-4dd5-8d66-783c9b5223d6","https://suno.com/song/12df90ac-95ba-4dd5-8d66-783c9b5223d6"],
+["Fingerstyle Lullaby 1","2:27","https://suno.com/embed/9f2bd5b8-b1a0-44c4-80a5-fbe9cc9a10d3","https://suno.com/song/9f2bd5b8-b1a0-44c4-80a5-fbe9cc9a10d3"],
+["Raga yaman 2","2:04","https://suno.com/embed/8ef8875d-173c-49dc-b881-d13299dbf767","https://suno.com/song/8ef8875d-173c-49dc-b881-d13299dbf767"],
+["Raga yaman 1","2:39","https://suno.com/embed/f8dcb975-cfac-44ee-8bc2-0490c60cdf43","https://suno.com/song/f8dcb975-cfac-44ee-8bc2-0490c60cdf43"],
+["Dama dama mast qalandar story","2:45","https://suno.com/embed/de9b4419-e029-4bbb-b189-cffcf8478889","https://suno.com/song/de9b4419-e029-4bbb-b189-cffcf8478889"]
+];
+const radioBlocks = [
+  {name: 'Morning Light', hours: '6:00 AM – 12:00 PM ET', tracks: [9, 0, 4, 8, 17, 19]},
+  {name: 'Afternoon Blend', hours: '12:00 PM – 6:00 PM ET', tracks: [2, 3, 11, 12, 15, 20, 21]},
+  {name: 'Evening Poetry & Raga', hours: '6:00 PM – 12:00 AM ET', tracks: [1, 5, 7, 14, 16, 25, 24, 26]},
+  {name: 'Night Resonance', hours: '12:00 AM – 6:00 AM ET', tracks: [6, 10, 13, 18, 23, 22]}
+];
+const trackBlock = [];
+radioBlocks.forEach((b, bi) => b.tracks.forEach(ti => { trackBlock[ti] = bi; }));
+function etHour() {
+  try {
+    const h = Number(new Date().toLocaleString('en-US', {timeZone: 'America/New_York', hour: 'numeric', hour12: false}));
+    return h % 24;
+  } catch (e) { return new Date().getHours(); }
+}
+function blockForHour(h) {
+  if (h >= 6 && h < 12) return 0;
+  if (h >= 12 && h < 18) return 1;
+  if (h >= 18) return 2;
+  return 3;
+}
+function parseDur(s) { const p = s.split(':'); return Number(p[0]) * 60 + Number(p[1]); }
+const onAir = blockForHour(etHour());
+document.getElementById('onAirBlock').innerHTML = '<strong>🔴 On air now:</strong> ' + radioBlocks[onAir].name + ' — ' + radioBlocks[onAir].hours + '.';
+let radioOrder = [];
+for (let b = 0; b < 4; b++) { radioOrder = radioOrder.concat(radioBlocks[(onAir + b) % 4].tracks); }
+let radioPos = 0;
+let radioMode = false;
+let radioTimer = null;
+let prevIdx = null;
+let justPlayed = [];
+const radioPlayer = document.getElementById('radioPlayer');
+const radioNow = document.getElementById('radioNowPlaying');
+const radioUpNext = document.getElementById('radioUpNext');
+const radioOpen = document.getElementById('radioOpenOnSuno');
+const radioGroups = document.getElementById('radioTrackGroups');
+const justPlayedEl = document.getElementById('radioJustPlayed');
+const modeBtn = document.getElementById('radioModeBtn');
+function radioRender() {
+  radioGroups.innerHTML = '';
+  radioBlocks.forEach((b, bi) => {
+    const h = document.createElement('h3');
+    h.textContent = b.name + ' — ' + b.hours;
+    radioGroups.appendChild(h);
+    const ol = document.createElement('ol');
+    b.tracks.forEach(ti => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = radioTracks[ti][0] + ' (' + radioTracks[ti][1] + ')';
+      btn.style.cssText = 'background:none;border:0;color:inherit;font:inherit;cursor:pointer;text-align:left;padding:0';
+      if (ti === radioOrder[radioPos]) { btn.style.color = '#f5c518'; btn.style.fontWeight = 'bold'; }
+      btn.addEventListener('click', () => { radioPos = radioOrder.indexOf(ti); radioPlay(); startTimer(); });
+      li.appendChild(btn);
+      ol.appendChild(li);
+    });
+    radioGroups.appendChild(ol);
+  });
+  justPlayedEl.textContent = justPlayed.length ? justPlayed.join(' · ') : 'Nothing played yet this visit.';
+}
+function radioPlay() {
+  const ti = radioOrder[radioPos];
+  const t = radioTracks[ti];
+  if (prevIdx !== null && prevIdx !== ti) {
+    justPlayed.unshift(radioTracks[prevIdx][0]);
+    justPlayed = justPlayed.slice(0, 5);
+  }
+  prevIdx = ti;
+  radioPlayer.src = t[2];
+  radioNow.textContent = 'Now playing: ' + t[0] + ' (' + t[1] + ') — ' + radioBlocks[trackBlock[ti]].name;
+  const nt = radioTracks[radioOrder[(radioPos + 1) % radioOrder.length]];
+  radioUpNext.textContent = 'Up next: ' + nt[0] + ' (' + nt[1] + ')';
+  radioOpen.href = t[3];
+  radioRender();
+}
+function startTimer() {
+  clearTimeout(radioTimer);
+  if (!radioMode) return;
+  const secs = parseDur(radioTracks[radioOrder[radioPos]][1]) + 3;
+  radioTimer = setTimeout(() => { radioPos = (radioPos + 1) % radioOrder.length; radioPlay(); startTimer(); }, secs * 1000);
+}
+modeBtn.addEventListener('click', () => {
+  radioMode = !radioMode;
+  modeBtn.textContent = radioMode ? '⏸ Stop auto-advance' : '▶ Start the Radio';
+  startTimer();
+});
+document.getElementById('radioPrev').addEventListener('click', () => { radioPos = (radioPos - 1 + radioOrder.length) % radioOrder.length; radioPlay(); startTimer(); });
+document.getElementById('radioNext').addEventListener('click', () => { radioPos = (radioPos + 1) % radioOrder.length; radioPlay(); startTimer(); });
+document.getElementById('radioShuffle').addEventListener('click', () => {
+  for (let i = radioOrder.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [radioOrder[i], radioOrder[j]] = [radioOrder[j], radioOrder[i]]; }
+  radioPos = 0; radioPlay(); startTimer();
+});
+if (new URLSearchParams(location.search).get('requested') === '1') {
+  document.getElementById('requestThanks').hidden = false;
+}
+radioPlay();
+</script>
+
+<footer class="site-footer">
+  <svg class="skyline" width="220" height="34" viewBox="0 0 220 34" aria-hidden="true"><g fill="#f5c518"><rect x="0" y="14" width="16" height="20"/><rect x="20" y="8" width="16" height="26"/><rect x="40" y="18" width="14" height="16"/><rect x="58" y="4" width="18" height="30"/><polygon points="67,0 63,4 71,4"/><rect x="80" y="12" width="16" height="22"/><rect x="100" y="16" width="14" height="18"/><rect x="118" y="6" width="16" height="28"/><rect x="138" y="14" width="16" height="20"/><rect x="158" y="9" width="14" height="25"/><rect x="176" y="16" width="14" height="18"/><rect x="194" y="5" width="16" height="29"/></g></svg>
+  <p><strong>mOHiKOnTOk Sound Lab</strong> &mdash; 1389 Kearney Ave, Bronx, NY 10465</p>
+  <p>Phone: <a href="tel:+15512663479">(551) 266-3479</a> &bull; Email: <a href="mailto:studio@mohikontok.com">studio@mohikontok.com</a></p>
+  <p>Hours: Open 24/7</p>
+  <p class="footer-social">
+    <a href="https://www.facebook.com/mohikontok" target="_blank" rel="noopener" aria-label="Facebook"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+    <a href="https://www.instagram.com/mohikontok" target="_blank" rel="noopener" aria-label="Instagram"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a>
+    <a href="https://www.youtube.com/@mohikontok" target="_blank" rel="noopener" aria-label="YouTube"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.tiktok.com/@mohikontok" target="_blank" rel="noopener" aria-label="TikTok"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+    <a href="https://open.spotify.com/artist/3r7P1vpv1GVFxQ9GnSHDS2" target="_blank" rel="noopener" aria-label="Spotify"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+  </p>
+  <p><a href="privacy.html">Privacy Policy</a> &bull; <a href="sitemap.html">Site Map</a></p>
+</footer>
+<a class="sticky-call" href="tel:+15512663479">📞 Call to book &mdash; (551) 266-3479</a>
+</body>
+</html>
