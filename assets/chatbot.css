@@ -1,0 +1,178 @@
+/* Mohikontok Sound Lab — FAQ chatbot widget.
+   Matches the site theme (assets/style.css variables):
+   near-black bg, gold #f5c518, studio red #d7263d, panel #221c22.
+   No images, no backend, no tracking. Pure client-side FAQ matching. */
+
+/* Launcher button — bottom right. Clears the mobile sticky-call bar. */
+.msl-chat-launcher {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1100;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--gold, #f5c518);
+  background: var(--gold, #f5c518);
+  color: var(--gold-ink, #111111);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+  font-size: 1.7rem;
+  line-height: 1;
+  padding: 0;
+}
+.msl-chat-launcher:hover { filter: brightness(1.08); }
+.msl-chat-launcher:focus-visible { outline: 3px solid var(--gold, #f5c518); outline-offset: 3px; }
+
+/* Panel */
+.msl-chat-panel {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 5.5rem;
+  z-index: 1100;
+  width: 380px;
+  max-width: calc(100vw - 2rem);
+  height: 560px;
+  max-height: calc(100vh - 7rem);
+  display: flex;
+  flex-direction: column;
+  background: var(--panel, #221c22);
+  color: var(--text, #f7f3f0);
+  border: 1px solid var(--border, #4a3f45);
+  border-top: 4px solid var(--gold, #f5c518);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.msl-chat-panel[hidden] { display: none; }
+
+.msl-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  background: var(--panel-2, #2a222a);
+  border-bottom: 1px solid var(--border, #4a3f45);
+}
+.msl-chat-header .msl-chat-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gold, #f5c518);
+  color: var(--gold-ink, #111111);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+  flex: none;
+}
+.msl-chat-header .msl-chat-title { font-weight: 800; line-height: 1.25; }
+.msl-chat-header .msl-chat-subtitle { font-size: 0.85rem; color: var(--muted, #d8cfc8); line-height: 1.25; }
+.msl-chat-header .msl-chat-spacer { flex: 1; }
+.msl-chat-lang,
+.msl-chat-close {
+  background: transparent;
+  color: var(--text, #f7f3f0);
+  border: 1px solid var(--border, #4a3f45);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+.msl-chat-lang:hover, .msl-chat-close:hover { border-color: var(--gold, #f5c518); color: var(--gold, #f5c518); }
+.msl-chat-lang:focus-visible, .msl-chat-close:focus-visible { outline: 3px solid var(--gold, #f5c518); outline-offset: 2px; }
+
+.msl-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.msl-chat-msg { max-width: 88%; padding: 0.6rem 0.85rem; border-radius: 10px; overflow-wrap: break-word; }
+.msl-chat-msg p { margin: 0 0 0.4rem; }
+.msl-chat-msg p:last-child { margin-bottom: 0; }
+.msl-chat-msg a { color: var(--gold, #f5c518); }
+.msl-chat-msg-bot { background: var(--panel-2, #2a222a); border: 1px solid var(--border, #4a3f45); align-self: flex-start; border-bottom-left-radius: 2px; }
+.msl-chat-msg-user { background: var(--gold, #f5c518); color: var(--gold-ink, #111111); align-self: flex-end; border-bottom-right-radius: 2px; }
+.msl-chat-msg-user a { color: var(--gold-ink, #111111); }
+.msl-chat-msg .msl-chat-action {
+  display: inline-block;
+  margin-top: 0.45rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  background: var(--accent, #d7263d);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.msl-chat-msg .msl-chat-action:hover { filter: brightness(1.1); }
+
+.msl-chat-typing { color: var(--muted, #d8cfc8); font-style: italic; }
+
+.msl-chat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--border, #4a3f45);
+}
+.msl-chat-chip {
+  background: transparent;
+  color: var(--gold, #f5c518);
+  border: 1px solid var(--gold, #f5c518);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  line-height: 1.3;
+}
+.msl-chat-chip:hover { background: var(--gold, #f5c518); color: var(--gold-ink, #111111); }
+.msl-chat-chip:focus-visible { outline: 3px solid var(--gold, #f5c518); outline-offset: 2px; }
+
+.msl-chat-input-row {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem 0.9rem;
+  border-top: 1px solid var(--border, #4a3f45);
+}
+.msl-chat-input {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg, #100e10);
+  color: var(--text, #f7f3f0);
+  border: 1px solid var(--border, #4a3f45);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+.msl-chat-input:focus-visible { outline: 3px solid var(--gold, #f5c518); outline-offset: 2px; }
+.msl-chat-send {
+  background: var(--accent, #d7263d);
+  color: #ffffff;
+  border: 2px solid var(--accent, #d7263d);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.msl-chat-send:hover { filter: brightness(1.1); }
+.msl-chat-send:focus-visible { outline: 3px solid var(--gold, #f5c518); outline-offset: 2px; }
+
+/* Mobile: sit above the full-width sticky-call bar. */
+@media (max-width: 700px) {
+  .msl-chat-launcher { bottom: 3.75rem; right: 0.9rem; }
+  .msl-chat-panel { right: 0.5rem; bottom: 7.5rem; max-height: calc(100vh - 9rem); }
+}
